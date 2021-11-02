@@ -1,11 +1,13 @@
 1. Abrir terminal
 2. Verificar se o Python está instalado ("python3 -V / python -V")
 3. Ir para o diretório raiz do site ("cd ...")
-4. Inciar servidor:
-      No linux: sudo python3 -m http.server 80 / sudo python -m SimpleHTTPServer 80
-      No windows: python3 -m http.server 80 / python -m SimpleHTTPServer 80
-5. Se quiser, criar uma página index.html
-
+4. Criar diretório "cgi-bin" e colocar lá as rotinas python com permissão de execução
+5. voltar para o diretório raiz do site 
+6. Inciar servidor:
+      python3 -m http.server --cgi / python -m SimpleHTTPServer --cgi
+7. Se quiser, criar uma página index.html
+   Exemplo:
+   
 <!DOCTYPE HTML>
 <html lang=”pt-br”>
     <head>
@@ -14,13 +16,17 @@
     </head>
     <body>
         <h1>Olá, Usuário!</h1>
-        <p>Quer ir para a o site XPTO? <a href="home_xpto.html">Clique aqui</a></p>
     </body>
 </html>
 
-6. Para acessar o servidor:
-6.i. Descubra o endereço IP do servidor:
-      IP externo (internet): https://www.meuip.com.br/ (geralmente não está acessível, por segurança)
-      IP interno (rede local) no linux: ip addr show
-      IP interno (rede local) no windows: ipconfig (procure "Endereço IPV4")
-6.2. Acessar páginas: http://(endereco_IP_do_site)/index.html
+8. Para acessar o servidor:
+      Descubra o endereço IP do servidor:
+            IP externo (internet): https://www.meuip.com.br/ (geralmente não está acessível, por segurança)
+            IP interno (rede local) no linux: ip addr show
+            IP interno (rede local) no windows: ipconfig (procure "Endereço IPV4")
+      Acessar páginas: 
+            http://(endereco_IP_do_site):8000
+      Como chamar cgi/python de dentro do formulário:
+            <form action="cgi-bin/backend.py"> (se a pagina estiver no diretório raiz do servidor)
+            <form action="http://(endereco_IP_do_site):8000/cgi-bin/backend.py"> (se a pagina estiver em outro lugar)
+            
